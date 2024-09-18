@@ -8,9 +8,11 @@ import nltk
 from nltk.tokenize import sent_tokenize
 
 # emoji definitions
-emoji_check = "✅"
-emoji_stop  = "⛔️"
-emoji_list  = "📋"
+emoji_check   = "✅"
+emoji_stop    = "⛔️"
+emoji_list    = "📋"
+emoji_plus    = "➕"
+emoji_garbage = "🗑️"
 
 
 # TODO: avoid calling these each render
@@ -82,7 +84,7 @@ elif choice == "Multiple Messages Check":
     message = st.text_area("Enter your message")
     col1, _, col2 = st.columns([1,7,1])
     with col2:
-        if st.button("âž• Add"):
+        if st.button(f"{emoji_plus} Add"):
             st.session_state['messages'].append(message)
     with col1:
         check = st.button(f"{emoji_check} Check")
@@ -109,7 +111,7 @@ elif choice == "Multiple Messages Check":
             with c1:
                 st.info(message)
             with c2:
-                if st.button("X", key=f"delete_{i}"):
+                if st.button(emoji_garbage, key=f"delete_{i}"):
                     st.session_state['messages'].remove(message)
                     st.rerun()
                     break
