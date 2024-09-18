@@ -7,6 +7,12 @@ import time
 import nltk
 from nltk.tokenize import sent_tokenize
 
+# emoji definitions
+emoji_check = "✅"
+emoji_stop  = "⛔️"
+emoji_list  = "📋"
+
+
 # TODO: avoid calling these each render
 nltk.download('punkt')
 nltk.download('punkt_tab')
@@ -60,17 +66,17 @@ if choice == "Single Message Check":
     st.header("Single Message Check")
     user_input = st.text_area("Enter your message")
     
-    if st.button("ðŸ“ Check"):
+    if st.button(f"{emoji_check} Check"):
         if not user_input:
-            st.warning("ðŸ“ Please enter a message to check.")
+            st.warning(f"{emoji_list} Please enter a message to check.")
         else:
             with st.spinner('Please Wait...'):
                 time.sleep(2)
                 result = predict_user_input(user_input)
                 if not result:
-                    st.success("âœ… The message is safe")
+                    st.success(f"{emoji_check} The message is safe")
                 else:
-                    st.error("âŒ The message is spam")
+                    st.error(f"{emoji_stop} The message is spam")
 elif choice == "Multiple Messages Check":
     st.header("Multiple Messages Check")
     message = st.text_area("Enter your message")
@@ -79,7 +85,7 @@ elif choice == "Multiple Messages Check":
         if st.button("âž• Add"):
             st.session_state['messages'].append(message)
     with col1:
-        check = st.button("ðŸ“ Check")
+        check = st.button(f"{emoji_check} Check")
     if check:
         processed_input = pd.DataFrame({
             "message": st.session_state['messages'],
@@ -91,9 +97,9 @@ elif choice == "Multiple Messages Check":
         predictions = model.predict(processed_input)
         for i, message in enumerate(st.session_state['messages']):
             if predictions[i]:
-                st.error(f'âŒ {message}')
+                st.error(f'{emoji_stop} {message}')
             else:
-                st.success(f'âœ… {message}')
+                st.success(f'{emoji_check} {message}')
         del st.session_state['messages']
     else:
         # Process button clicks and remove messages
@@ -108,7 +114,7 @@ elif choice == "Multiple Messages Check":
                     st.rerun()
                     break
 elif choice == "Info":
-    st.header("ðŸ“ About This Application")
+    st.header(f"{emoji_list} About This Application")
     st.write("""
     This application uses a machine learning model to detect spam messages.
     It provides two main functionalities:
