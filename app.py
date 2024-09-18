@@ -6,6 +6,8 @@ import pandas as pd
 import time
 import nltk
 from nltk.tokenize import sent_tokenize
+
+# TODO: avoid calling this each render
 nltk.download('punkt')
 
 st.set_page_config(page_title="SpamSentry",page_icon="ðŸ“¨")
