@@ -7,8 +7,9 @@ import time
 import nltk
 from nltk.tokenize import sent_tokenize
 
-# TODO: avoid calling this each render
+# TODO: avoid calling these each render
 nltk.download('punkt')
+nltk.download('punkt_tab')
 
 st.set_page_config(page_title="SpamSentry",page_icon="ðŸ“¨")
 style = '''
