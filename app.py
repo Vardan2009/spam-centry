@@ -70,7 +70,7 @@ if choice == "Single Message Check":
     
     if st.button(f"{emoji_check} Check"):
         if not user_input:
-            st.warning(f"{emoji_list} Please enter a message to check.")
+            st.warning(f"{emoji_stop} Please enter a message to check.")
         else:
             with st.spinner('Please Wait...'):
                 time.sleep(2)
@@ -84,25 +84,27 @@ elif choice == "Multiple Messages Check":
     message = st.text_area("Enter your message")
     col1, _, col2 = st.columns([1,7,1])
     with col2:
-        if st.button(f"{emoji_plus} Add"):
+        if st.button(f"{emoji_plus} Add") and len(message) > 0:
             st.session_state['messages'].append(message)
     with col1:
         check = st.button(f"{emoji_check} Check")
     if check:
-        processed_input = pd.DataFrame({
-            "message": st.session_state['messages'],
-            "char_count": [len(user_input) for user_input in st.session_state['messages']],
-            "word_count": [len(user_input.split()) for user_input in st.session_state['messages']],
-            "sentence_count": [len(sent_tokenize(user_input)) for user_input in st.session_state['messages']]
-        })
-        print(processed_input)
-        predictions = model.predict(processed_input)
-        for i, message in enumerate(st.session_state['messages']):
-            if predictions[i]:
-                st.error(f'{emoji_stop} {message}')
-            else:
-                st.success(f'{emoji_check} {message}')
-        del st.session_state['messages']
+        if len(st.session_state["messages"]) <= 0:
+            st.warning(f"{emoji_stop} Please enter messages to check")
+        else:
+            processed_input = pd.DataFrame({
+                "message": st.session_state['messages'],
+                "char_count": [len(user_input) for user_input in st.session_state['messages']],
+                "word_count": [len(user_input.split()) for user_input in st.session_state['messages']],
+                "sentence_count": [len(sent_tokenize(user_input)) for user_input in st.session_state['messages']]
+            })
+            predictions = model.predict(processed_input)
+            for i, message in enumerate(st.session_state['messages']):
+                if predictions[i]:
+                    st.error(f'{emoji_stop} {message}')
+                else:
+                    st.success(f'{emoji_check} {message}')
+            del st.session_state['messages']
     else:
         # Process button clicks and remove messages
         for i in range(len(st.session_state['messages'])):
