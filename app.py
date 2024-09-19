@@ -64,7 +64,7 @@ st.sidebar.subheader("Spam Detection Algorithm")
 # Sidebar for navigation
 options = ["Single Message Check", "Multiple Messages Check", "Info"]
 logos = ["📩", "📨", "📋"]
-choice = None
+choice = options[2]
 for i, c in enumerate(options):
     if st.sidebar.button(f"{logos[i]} {c}"):
         choice = c
