@@ -135,7 +135,7 @@ elif choice == "Info":
     #### Credits:
     Created as a final work for the "Data is King" workshop in TUMO.
     - Narek Shaghoyan
-    - Eva Mandaryan
+    - Yeva Mandaryan
     - Vardan Petrosyan
     - Ashot Meliqyan
     - Anush Grigoryan
