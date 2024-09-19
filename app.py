@@ -1,6 +1,5 @@
 import joblib
 import re
-# from sklearn.feature_extraction.text import CountVectorizer
 import streamlit as st
 import pandas as pd
 import time
@@ -43,7 +42,6 @@ st.markdown(style, unsafe_allow_html = True)
 
 # Load the model and vectorizer
 model = joblib.load('spam_model.pkl')
-# vectorizer = CountVectorizer()
 
 # Function to predict if a message is spam
 def predict_user_input(user_input):
@@ -88,7 +86,7 @@ if st.session_state['choice'] == "Single Message Check":
             st.warning(f"{emoji_stop} Please enter a message to check.")
         else:
             with st.spinner('Please Wait...'):
-                time.sleep(2)
+                time.sleep(1)
                 result = predict_user_input(user_input)
                 if not result:
                     st.success(f"{emoji_check} The message is safe")
