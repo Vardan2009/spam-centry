@@ -92,7 +92,7 @@ st.sidebar.divider()
 st.sidebar.link_button("🖥️ GitHub Repo (🔗)","https://github.com/Vardan2009/spamsentry")
 
 if st.session_state['choice'] == "Single Message Check":
-    st.markdown("<div class=\"fadeincontainer\">")
+    st.markdown("<div class=\"fadeincontainer\">", unsafe_allow_html=True)
     st.header(f"{logos[0]} Single Message Check")
     user_input = st.text_area("Enter your message")
     
@@ -107,9 +107,9 @@ if st.session_state['choice'] == "Single Message Check":
                     st.success(f"{emoji_check} The message is safe")
                 else:
                     st.error(f"{emoji_stop} The message is spam")
-    st.markdown("</div>")
+    st.markdown("</div>", unsafe_allow_html=True)
 elif st.session_state['choice'] == "Multiple Messages Check":
-    st.markdown("<div class=\"fadeincontainer\">")
+    st.markdown("<div class=\"fadeincontainer\">", unsafe_allow_html=True)
     st.header(f"{logos[1]} Multiple Messages Check")
     message = st.text_area("Enter your message")
     col1, _, col2 = st.columns([1,7,1])
@@ -147,9 +147,9 @@ elif st.session_state['choice'] == "Multiple Messages Check":
                     st.session_state['messages'].remove(message)
                     st.rerun()
                     break
-    st.markdown("</div>")
+    st.markdown("</div>", unsafe_allow_html=True)
 elif st.session_state['choice'] == "Info":
-    st.markdown("<div class=\"fadeincontainer\">")
+    st.markdown("<div class=\"fadeincontainer\">", unsafe_allow_html=True)
     st.header(f"{logos[2]} About This Application")
     st.write("""
     This application uses a machine learning model to detect spam messages.
@@ -172,4 +172,4 @@ elif st.session_state['choice'] == "Info":
     - Ashot Meliqyan
     - Anush Grigoryan
     """)
-    st.markdown("</div>")
+    st.markdown("</div>", unsafe_allow_html=True)
