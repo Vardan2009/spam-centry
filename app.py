@@ -45,10 +45,6 @@ style = '''
                 opacity: 1;
             }
         }
-
-        div.block-container {
-            animation: fadein 1s forward;
-        }
     </style>
 '''
 
