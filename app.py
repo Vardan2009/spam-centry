@@ -66,7 +66,7 @@ logos = ["📩", "📨", "📋"]
 # choice = st.sidebar.selectbox("Select a page", options)
 choice = None
 for i, c in enumerate(options):
-    if st.sidebar.button(f"{if choice == c "➨ " else ""}{logos[i]} {c}"):
+    if st.sidebar.button(f"{"➨ " if choice == c else ""}{logos[i]} {c}"):
         choice = c
 
 if 'messages' not in st.session_state:
