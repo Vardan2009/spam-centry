@@ -62,7 +62,6 @@ st.sidebar.image("logo.png")
 st.sidebar.subheader("Spam Detection Algorithm")
 
 # Sidebar for navigation
-st.sidebar.title("Navigation")
 options = ["Single Message Check", "Multiple Messages Check", "Info"]
 logos = ["📩", "📨", "📋"]
 choice = None
