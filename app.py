@@ -73,7 +73,7 @@ if 'messages' not in st.session_state:
     st.session_state['messages'] = []
 
 if choice == "Single Message Check":
-    st.header("Single Message Check")
+    st.header(f"{logos[0]} Single Message Check")
     user_input = st.text_area("Enter your message")
     
     if st.button(f"{emoji_check} Check"):
@@ -88,7 +88,7 @@ if choice == "Single Message Check":
                 else:
                     st.error(f"{emoji_stop} The message is spam")
 elif choice == "Multiple Messages Check":
-    st.header("Multiple Messages Check")
+    st.header(f"{logos[1]} Multiple Messages Check")
     message = st.text_area("Enter your message")
     col1, _, col2 = st.columns([1,7,1])
     with col2:
@@ -126,7 +126,7 @@ elif choice == "Multiple Messages Check":
                     st.rerun()
                     break
 elif choice == "Info":
-    st.header(f"{emoji_list} About This Application")
+    st.header(f"{logos[2]} About This Application")
     st.write("""
     This application uses a machine learning model to detect spam messages.
     It provides two main functionalities:
