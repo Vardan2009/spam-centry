@@ -33,6 +33,7 @@ style = '''
         section[data-testid="stSidebar"] div.stButton button {
             width: 100%;
             text-align: left;
+            justify-content: left;
         }
     </style>
 '''
