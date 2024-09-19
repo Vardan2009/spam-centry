@@ -19,7 +19,7 @@ emoji_garbage = "🗑️"
 nltk.download('punkt')
 nltk.download('punkt_tab')
 
-st.set_page_config(page_title="SpamSentry",page_icon="ðŸ“¨")
+st.set_page_config(page_title="SpamSentry",page_icon="📨")
 style = '''
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
