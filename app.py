@@ -30,6 +30,10 @@ style = '''
             font-weight: 400;
             font-style: normal;
         }
+        section[data-testid="stSidebar"] div.stButton button {
+            background-color: brown;
+            width: 200px;
+        }
     </style>
 '''
 st.markdown(style, unsafe_allow_html=True)
@@ -59,7 +63,12 @@ st.sidebar.subheader("Spam Detection Algorithm")
 # Sidebar for navigation
 st.sidebar.title("Navigation")
 options = ["Single Message Check", "Multiple Messages Check", "Info"]
-choice = st.sidebar.selectbox("Select a page", options)
+logos = ["📩", "📨", "📋"]
+# choice = st.sidebar.selectbox("Select a page", options)
+choice = None
+for i, c in enumerate(options):
+    if st.button(f"{logos[i]} {c}"):
+        choice = c
 
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
