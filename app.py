@@ -30,7 +30,7 @@ style = '''
             font-weight: 400;
             font-style: normal;
         }
-        section[data-testid="stSidebar"] div.stButton button {
+        section[data-testid="stSidebar"] div.stButton div.stLinkButton button {
             width: 100%;
             text-align: left;
             justify-content: left;
