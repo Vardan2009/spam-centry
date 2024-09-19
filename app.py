@@ -31,8 +31,7 @@ style = '''
             font-style: normal;
         }
         section[data-testid="stSidebar"] div.stButton button {
-            background-color: brown;
-            width: 200px;
+            width: 100%;
         }
     </style>
 '''
