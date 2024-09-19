@@ -69,7 +69,8 @@ choice = options[2]
 for i, c in enumerate(options):
     if st.sidebar.button(f"{logos[i]} {c}"):
         choice = c
-st.sidebar.link_button("🖥️ GitHub Repo","https://github.com/Vardan2009/spamsentry")
+st.sidebar.divider()
+st.sidebar.link_button("🖥️ GitHub Repo (🔗)","https://github.com/Vardan2009/spamsentry")
 
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
