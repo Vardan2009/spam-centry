@@ -5,6 +5,7 @@ import pandas as pd
 import time
 import nltk
 from nltk.tokenize import sent_tokenize
+from nltk.data import find
 
 # emoji definitions
 emoji_check   = "✅"
@@ -14,9 +15,14 @@ emoji_plus    = "➕"
 emoji_garbage = "🗑️"
 
 
-# TODO: avoid calling these each render
-nltk.download('punkt')
-nltk.download('punkt_tab')
+def ensure_nltk(nm):
+    try:
+        find(nm)
+    except LookupError:
+        nltk.download(nm)
+
+ensure_nltk('punkt')
+ensure_nltk('punkt_tab')
 
 st.set_page_config(page_title="SpamSentry",page_icon="📨")
 style = '''
