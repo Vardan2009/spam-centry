@@ -31,7 +31,7 @@ style = '''
             font-style: normal;
         }
         section[data-testid="stSidebar"] div.stButton button,
-        section[data-testid="stSidebar"] div.stLinkButton button {
+        section[data-testid="stSidebar"] div.stLinkButton a {
             width: 100%;
             text-align: left;
             justify-content: left;
