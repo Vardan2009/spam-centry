@@ -65,17 +65,20 @@ st.sidebar.subheader("Spam Detection Algorithm")
 # Sidebar for navigation
 options = ["Single Message Check", "Multiple Messages Check", "Info"]
 logos = ["📩", "📨", "📋"]
-choice = options[2]
+
+# Initializing state variables
+if 'messages' not in st.session_state:
+    st.session_state['messages'] = []
+if 'choice' not in st.session_state:
+    st.session_state['choice'] = options[2]
+
 for i, c in enumerate(options):
     if st.sidebar.button(f"{logos[i]} {c}"):
-        choice = c
+        st.session_state['choice'] = c
 st.sidebar.divider()
 st.sidebar.link_button("🖥️ GitHub Repo (🔗)","https://github.com/Vardan2009/spamsentry")
 
-if 'messages' not in st.session_state:
-    st.session_state['messages'] = []
-
-if choice == "Single Message Check":
+if st.session_state['choice'] == "Single Message Check":
     st.header(f"{logos[0]} Single Message Check")
     user_input = st.text_area("Enter your message")
     
@@ -90,7 +93,7 @@ if choice == "Single Message Check":
                     st.success(f"{emoji_check} The message is safe")
                 else:
                     st.error(f"{emoji_stop} The message is spam")
-elif choice == "Multiple Messages Check":
+elif st.session_state['choice'] == "Multiple Messages Check":
     st.header(f"{logos[1]} Multiple Messages Check")
     message = st.text_area("Enter your message")
     col1, _, col2 = st.columns([1,7,1])
@@ -128,7 +131,7 @@ elif choice == "Multiple Messages Check":
                     st.session_state['messages'].remove(message)
                     st.rerun()
                     break
-elif choice == "Info":
+elif st.session_state['choice'] == "Info":
     st.header(f"{logos[2]} About This Application")
     st.write("""
     This application uses a machine learning model to detect spam messages.
