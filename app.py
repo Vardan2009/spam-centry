@@ -1,6 +1,6 @@
 import joblib
 import re
-from sklearn.feature_extraction.text import CountVectorizer
+# from sklearn.feature_extraction.text import CountVectorizer
 import streamlit as st
 import pandas as pd
 import time
@@ -36,21 +36,14 @@ style = '''
             text-align: left;
             justify-content: left;
         }
-
-        @keyframes fadein {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
     </style>
 '''
 
+st.markdown(style, unsafe_allow_html = True)
+
 # Load the model and vectorizer
 model = joblib.load('spam_model.pkl')
-vectorizer = CountVectorizer()
+# vectorizer = CountVectorizer()
 
 # Function to predict if a message is spam
 def predict_user_input(user_input):
