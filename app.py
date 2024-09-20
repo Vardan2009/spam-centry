@@ -82,6 +82,7 @@ for i, c in enumerate(options):
         st.session_state['choice'] = c
 st.sidebar.divider()
 st.sidebar.link_button("🖥️ GitHub Repo (🔗)","https://github.com/Vardan2009/spamsentry")
+st.sidebar.link_button("📋 Examples (🔗)","https://github.com/Vardan2009/spamsentry/blob/main/EXAMPLES.md")
 
 if st.session_state['choice'] == "Single Message Check":
     st.header(f"{logos[0]} Single Message Check")
